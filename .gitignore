@@ -1,7 +1,20 @@
+src/output/
+*.pdf
+*.epub
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
 *$py.class
+*.pyc
+.env
+venv/
+env/
+.venv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
 
 # C extensions
 *.so
@@ -216,3 +229,4 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+>>>>>>> 96b659461f1ae1434803746fa4f7f2b916db3360
