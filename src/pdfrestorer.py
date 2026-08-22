@@ -6,15 +6,15 @@ import os
 from ebooklib import epub
 import markdown
 from xhtml2pdf import pisa
-#import shutil
+import shutil
 import argparse
 
 def create_file(input_path, output_dir):
-    #for item in Path("/output").absolute.iterdir():
-    #    if item.is_file() or item.is_symlink():
-    #        item.unlink()
-    #    elif item.is_dir():
-    #        shutil.rmtree(item)
+    imgs_dir = Path("./output/imgs")
+    if imgs_dir.exists():
+        shutil.rmtree(imgs_dir)
+    imgs_dir.mkdir(parents=True, exist_ok=True)
+
     input_path = Path(input_path)
     if not input_path.exists():
         print(f"Error: Input file '{input_path}' does not exist.")
@@ -186,16 +186,18 @@ def create_file(input_path, output_dir):
 
     html_content = markdown.markdown(corrected_text, extensions=["tables", "fenced_code"])
 
-    
-    export_to_pdf(html_content, f"{base_name}_corrected.pdf")
-    export_to_epub(html_content, f"{base_name}_corrected.epub")
-    
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+        
+    export_to_pdf(html_content, str(output_dir / f"{base_name}_corrected.pdf"))
+    export_to_epub(html_content, str(output_dir / f"{base_name}_corrected.epub"))
+
     print("Files generated correctly")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process a PDF document and generate corrected EPUB and PDF files.")
     parser.add_argument("--input", type=str, required=True, help="Path to the input PDF file.")
-    parser.add_argument("--output_dir", type=str, default=".", help="Directory to save output files.")
+    parser.add_argument("--output", type=str, default=".", help="Directory to save output files.")
     args = parser.parse_args()
 
-    create_file(args.input, args.output_dir)
+    create_file(args.input, args.output)
