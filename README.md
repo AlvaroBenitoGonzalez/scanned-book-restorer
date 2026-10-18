@@ -11,6 +11,10 @@ A command-line tool for restoring the text of scanned books. It runs OCR on a sc
    - a `.pdf` file (via `xhtml2pdf`)
    - a `.epub` file (via `EbookLib`), with detected images embedded
 
+## Example Result
+ 
+![Result OCR](https://github.com/user-attachments/assets/d0235a8e-a078-458d-94c3-06bd7f693243)
+
 ## Requirements
 
 - **Python 3.12.10**
