@@ -1,5 +1,5 @@
 
-# book-converter
+# scanned-book-restorer
 
 A command-line tool for restoring the text of scanned books. It runs OCR on a scanned PDF, uses a local LLM to fix OCR errors (broken words, hyphenation, stray characters, unwanted line breaks) while preserving structure, and exports the corrected result as both a PDF and an EPUB.
 
